@@ -1,0 +1,1 @@
+[![GitHub Actions Demo](https://github.com/eugenenazirov/hexlet_pytest/actions/workflows/github-actions-demo.yml/badge.svg?branch=main)](https://github.com/eugenenazirov/hexlet_pytest/actions/workflows/github-actions-demo.yml)
