@@ -1,3 +1,630 @@
+Last login: Mon Jul  4 18:09:45 on ttys000
+➜  ~ cd Documents/DEVELOPMENT/Projects/hexlet-auto-test
+➜  hexlet-auto-test git:(main) git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+➜  hexlet-auto-test git:(main) ls
+README.rst       poetry.lock      tests
+hexlet_auto_test pyproject.toml
+➜  hexlet-auto-test git:(main) cat hexlet_auto_test/main.py
+from package.capitalize import capitalize
+
+
+print(capitalize('hello hexlet!'))
+    %
+➜  hexlet-auto-test git:(main) git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   hexlet_auto_test/package/capitalize.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+➜  hexlet-auto-test git:(main) ✗ git add .
+➜  hexlet-auto-test git:(main) ✗ git commit -m "Remove extra indent"
+[main 8822dba] Remove extra indent
+ Committer: Евгений Назиров <eugenenazirov@MacBook-Air-Evgenij.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 deletion(-)
+➜  hexlet-auto-test git:(main) git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+➜  hexlet-auto-test git:(main) poetry add --dev flake8
+Using version ^4.0.1 for flake8
+
+Updating dependencies
+Resolving dependencies... (4.9s)
+
+Writing lock file
+
+Package operations: 4 installs, 0 updates, 0 removals
+
+  • Installing mccabe (0.6.1)
+  • Installing pycodestyle (2.8.0)
+  • Installing pyflakes (2.4.0)
+  • Installing flake8 (4.0.1)
+➜  hexlet-auto-test git:(main) ✗ poetry run flake8 hexlet_auto_test/main.py
+hexlet_auto_test/main.py:5:1: W293 blank line contains whitespace
+hexlet_auto_test/main.py:5:5: W292 no newline at end of file
+➜  hexlet-auto-test git:(main) ✗ poetry run flake8 hexlet_auto_test/main.py
+➜  hexlet-auto-test git:(main) ✗ git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   hexlet_auto_test/main.py
+	modified:   poetry.lock
+	modified:   pyproject.toml
+
+no changes added to commit (use "git add" and/or "git commit -a")
+➜  hexlet-auto-test git:(main) ✗ git add hexlet_auto_test/main.py
+➜  hexlet-auto-test git:(main) ✗ git commit -m "Fix lint errors"
+[main de9eaf5] Fix lint errors
+ Committer: Евгений Назиров <eugenenazirov@MacBook-Air-Evgenij.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 deletion(-)
+➜  hexlet-auto-test git:(main) ✗ git add poetry.lock pyproject.toml
+➜  hexlet-auto-test git:(main) ✗ git commit -m "Add flake8 to dev dependencies"
+[main 9571554] Add flake8 to dev dependencies
+ Committer: Евгений Назиров <eugenenazirov@MacBook-Air-Evgenij.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 55 insertions(+), 1 deletion(-)
+➜  hexlet-auto-test git:(main) git statu
+git: 'statu' is not a git command. See 'git --help'.
+
+The most similar commands are
+	status
+	stage
+	stash
+➜  hexlet-auto-test git:(main) git status
+On branch main
+Your branch is ahead of 'origin/main' by 3 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+➜  hexlet-auto-test git:(main) git push
+Enumerating objects: 20, done.
+Counting objects: 100% (20/20), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (13/13), done.
+Writing objects: 100% (13/13), 2.13 KiB | 2.13 MiB/s, done.
+Total 13 (delta 8), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (8/8), completed with 6 local objects.
+To github.com:eugenenazirov/hexlet-auto-test.git
+   7a02a02..9571554  main -> main
+➜  hexlet-auto-test git:(main) poetry run pytest
+============================= test session starts ==============================
+platform darwin -- Python 3.10.5, pytest-5.4.3, py-1.11.0, pluggy-0.13.1
+rootdir: /Users/eugenenazirov/Documents/DEVELOPMENT/Projects/hexlet-auto-test
+collected 0 items / 2 errors
+
+==================================== ERRORS ====================================
+__________________ ERROR collecting tests/test_capitalize.py ___________________
+.venv/lib/python3.10/site-packages/py/_path/local.py:704: in pyimport
+    __import__(modname)
+<frozen importlib._bootstrap>:1027: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1006: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:688: in _load_unlocked
+    ???
+.venv/lib/python3.10/site-packages/_pytest/assertion/rewrite.py:143: in exec_module
+    source_stat, co = _rewrite_test(fn, self.config)
+.venv/lib/python3.10/site-packages/_pytest/assertion/rewrite.py:330: in _rewrite_test
+    co = compile(tree, fn, "exec", dont_inherit=True)
+E   TypeError: required field "lineno" missing from alias
+_______________ ERROR collecting tests/test_hexlet_auto_test.py ________________
+.venv/lib/python3.10/site-packages/py/_path/local.py:704: in pyimport
+    __import__(modname)
+<frozen importlib._bootstrap>:1027: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1006: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:688: in _load_unlocked
+    ???
+.venv/lib/python3.10/site-packages/_pytest/assertion/rewrite.py:143: in exec_module
+    source_stat, co = _rewrite_test(fn, self.config)
+.venv/lib/python3.10/site-packages/_pytest/assertion/rewrite.py:330: in _rewrite_test
+    co = compile(tree, fn, "exec", dont_inherit=True)
+E   TypeError: required field "lineno" missing from alias
+=========================== short test summary info ============================
+ERROR tests/test_capitalize.py - TypeError: required field "lineno" missing f...
+ERROR tests/test_hexlet_auto_test.py - TypeError: required field "lineno" mis...
+!!!!!!!!!!!!!!!!!!! Interrupted: 2 errors during collection !!!!!!!!!!!!!!!!!!!!
+============================== 2 errors in 0.07s ===============================
+➜  hexlet-auto-test git:(main) ✗ poetry run python tests/test_capitalize.py
+Traceback (most recent call last):
+  File "/Users/eugenenazirov/Documents/DEVELOPMENT/Projects/hexlet-auto-test/tests/test_capitalize.py", line 5, in <module>
+    assert capitalize('') == 'Hello'
+AssertionError
+➜  hexlet-auto-test git:(main) ✗ poetry run python tests/test_capitalize.py
+Все тесты пройдены!
+➜  hexlet-auto-test git:(main) ✗ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   hexlet_auto_test/__pycache__/__init__.cpython-310.pyc
+	modified:   hexlet_auto_test/package/__pycache__/capitalize.cpython-310.pyc
+	modified:   tests/__pycache__/__init__.cpython-310.pyc
+	modified:   tests/test_capitalize.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+➜  hexlet-auto-test git:(main) ✗ git restore hexlet_auto_test/__pycache__/__init__.cpython-310.pyc
+➜  hexlet-auto-test git:(main) ✗ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   hexlet_auto_test/package/__pycache__/capitalize.cpython-310.pyc
+	modified:   tests/__pycache__/__init__.cpython-310.pyc
+	modified:   tests/test_capitalize.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+➜  hexlet-auto-test git:(main) ✗ git restore hexlet_auto_test/package/__pycache__/capitalize.cpython-310.pyc
+➜  hexlet-auto-test git:(main) ✗ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   tests/__pycache__/__init__.cpython-310.pyc
+	modified:   tests/test_capitalize.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+➜  hexlet-auto-test git:(main) ✗ git restore tests/__pycache__/__init__.cpython-
+Add poetry files & dirs to .gitignore
+310.pyc
+➜  hexlet-auto-test git:(main) ✗ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   tests/test_capitalize.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+➜  hexlet-auto-test git:(main) ✗ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   .gitignore
+	modified:   tests/test_capitalize.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+➜  hexlet-auto-test git:(main) ✗ git add .gitignore
+➜  hexlet-auto-test git:(main) ✗ git commit
+[main 9892c79] Add poetry files & dirs to .gitignore
+ Committer: Евгений Назиров <eugenenazirov@MacBook-Air-Evgenij.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+Use assert instead of "if/else"
+    git commit --amend --reset-author
+
+ 1 file changed, 16 insertions(+)
+➜  hexlet-auto-test git:(main) ✗ git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   tests/test_capitalize.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+➜  hexlet-auto-test git:(main) ✗ git add tests/test_capitalize.py
+➜  hexlet-auto-test git:(main) ✗ git commit
+[main b220206] Use assert instead of "if/else"
+ Committer: Евгений Назиров <eugenenazirov@MacBook-Air-Evgenij.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+➜  hexlet-auto-test git:(main) git status
+On branch main
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+➜  hexlet-auto-test git:(main) git push
+Enumerating objects: 11, done.
+Counting objects: 100% (11/11), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (7/7), done.
+Writing objects: 100% (7/7), 989 bytes | 989.00 KiB/s, done.
+Total 7 (delta 4), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (4/4), completed with 3 local objects.
+To github.com:eugenenazirov/hexlet-auto-test.git
+   9571554..b220206  main -> main
+➜  hexlet-auto-test git:(main) make lint
+poetry run flake8 hexlet_auto_test/*
+➜  hexlet-auto-test git:(main) ✗ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	Makefile
+
+nothing added to commit but untracked files present (use "git add" to track)
+➜  hexlet-auto-test git:(main) ✗ git add Makefile
+➜  hexlet-auto-test git:(main) ✗ git commit -m "Add Makefile for quick start"
+[main 3ad7ead] Add Makefile for quick start
+ Committer: Евгений Назиров <eugenenazirov@MacBook-Air-Evgenij.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 17 insertions(+)
+ create mode 100644 Makefile
+➜  hexlet-auto-test git:(main) git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+➜  hexlet-auto-test git:(main) cd ..
+➜  Projects mkdir hexlet-pytest
+➜  Projects cd hexlet-pytest
+➜  hexlet-pytest ls
+➜  hexlet-pytest poetry config --list
+cache-dir = "/Users/eugenenazirov/Library/Caches/pypoetry"
+experimental.new-installer = true
+installer.parallel = true
+virtualenvs.create = true
+virtualenvs.in-project = true
+virtualenvs.path = "{cache-dir}/virtualenvs"  # /Users/eugenenazirov/Library/Caches/pypoetry/virtualenvs
+➜  hexlet-pytest poetry new .
+Created package hexlet_pytest in .
+➜  hexlet-pytest poetry install
+Creating virtualenv hexlet-pytest in /Users/eugenenazirov/Documents/DEVELOPMENT/Projects/hexlet-pytest/.venv
+Updating dependencies
+Resolving dependencies... (3.2s)
+
+Writing lock file
+
+Package operations: 8 installs, 0 updates, 0 removals
+
+  • Installing pyparsing (3.0.9)
+  • Installing attrs (21.4.0)
+  • Installing more-itertools (8.13.0)
+  • Installing packaging (21.3)
+  • Installing pluggy (0.13.1)
+  • Installing py (1.11.0)
+  • Installing wcwidth (0.2.5)
+  • Installing pytest (5.4.3)
+
+Installing the current project: hexlet-pytest (0.1.0)
+➜  hexlet-pytest ls
+README.rst     hexlet_pytest  poetry.lock    pyproject.toml tests
+➜  hexlet-pytest ls -a
+.              .venv          hexlet_pytest  pyproject.toml
+..             README.rst     poetry.lock    tests
+➜  hexlet-pytest poetry run pytest
+============================= test session starts ==============================
+platform darwin -- Python 3.10.5, pytest-5.4.3, py-1.11.0, pluggy-0.13.1
+rootdir: /Users/eugenenazirov/Documents/DEVELOPMENT/Projects/hexlet-pytest
+collected 0 items / 1 error
+
+==================================== ERRORS ====================================
+_________________ ERROR collecting tests/test_hexlet_pytest.py _________________
+.venv/lib/python3.10/site-packages/py/_path/local.py:704: in pyimport
+    __import__(modname)
+<frozen importlib._bootstrap>:1027: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1006: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:688: in _load_unlocked
+    ???
+.venv/lib/python3.10/site-packages/_pytest/assertion/rewrite.py:143: in exec_module
+    source_stat, co = _rewrite_test(fn, self.config)
+.venv/lib/python3.10/site-packages/_pytest/assertion/rewrite.py:330: in _rewrite_test
+    co = compile(tree, fn, "exec", dont_inherit=True)
+E   TypeError: required field "lineno" missing from alias
+=========================== short test summary info ============================
+ERROR tests/test_hexlet_pytest.py - TypeError: required field "lineno" missin...
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+=============================== 1 error in 0.04s ===============================
+➜  hexlet-pytest pip list
+Package           Version
+----------------- ---------
+appnope           0.1.3
+asttokens         2.0.5
+backcall          0.2.0
+certifi           2022.6.15
+decorator         5.1.1
+executing         0.8.3
+ipython           8.4.0
+jedi              0.18.1
+matplotlib-inline 0.1.3
+parso             0.8.3
+pexpect           4.8.0
+pickleshare       0.7.5
+pip               22.1.2
+prompt            0.4.1
+prompt-toolkit    3.0.29
+ptyprocess        0.7.0
+pure-eval         0.2.2
+Pygments          2.12.0
+setuptools        58.1.0
+six               1.16.0
+stack-data        0.3.0
+traitlets         5.3.0
+wcwidth           0.2.5
+➜  hexlet-pytest poetry run pip list
+Package        Version
+-------------- -------
+attrs          21.4.0
+hexlet-pytest  0.1.0
+more-itertools 8.13.0
+packaging      21.3
+pip            22.0.3
+pluggy         0.13.1
+py             1.11.0
+pyparsing      3.0.9
+pytest         5.4.3
+setuptools     60.6.0
+wcwidth        0.2.5
+wheel          0.37.1
+WARNING: You are using pip version 22.0.3; however, version 22.1.2 is available.
+You should consider upgrading via the '/Users/eugenenazirov/Documents/DEVELOPMENT/Projects/hexlet-pytest/.venv/bin/python -m pip install --upgrade pip' command.
+➜  hexlet-pytest poetry run python -m pip install --upgrade pip
+Requirement already satisfied: pip in ./.venv/lib/python3.10/site-packages (22.0.3)
+Collecting pip
+  Using cached pip-22.1.2-py3-none-any.whl (2.1 MB)
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 22.0.3
+    Uninstalling pip-22.0.3:
+      Successfully uninstalled pip-22.0.3
+Successfully installed pip-22.1.2
+➜  hexlet-pytest poetry run pip install --upgrade pytest
+Requirement already satisfied: pytest in ./.venv/lib/python3.10/site-packages (5.4.3)
+Collecting pytest
+  Downloading pytest-7.1.2-py3-none-any.whl (297 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 297.0/297.0 kB 406.1 kB/s eta 0:00:00
+Requirement already satisfied: pluggy<2.0,>=0.12 in ./.venv/lib/python3.10/site-packages (from pytest) (0.13.1)
+Requirement already satisfied: packaging in ./.venv/lib/python3.10/site-packages (from pytest) (21.3)
+Requirement already satisfied: py>=1.8.2 in ./.venv/lib/python3.10/site-packages (from pytest) (1.11.0)
+Requirement already satisfied: attrs>=19.2.0 in ./.venv/lib/python3.10/site-packages (from pytest) (21.4.0)
+Collecting iniconfig
+  Downloading iniconfig-1.1.1-py2.py3-none-any.whl (5.0 kB)
+Collecting tomli>=1.0.0
+  Downloading tomli-2.0.1-py3-none-any.whl (12 kB)
+Requirement already satisfied: pyparsing!=3.0.5,>=2.0.2 in ./.venv/lib/python3.10/site-packages (from packaging->pytest) (3.0.9)
+Installing collected packages: iniconfig, tomli, pytest
+  Attempting uninstall: pytest
+    Found existing installation: pytest 5.4.3
+    Uninstalling pytest-5.4.3:
+      Successfully uninstalled pytest-5.4.3
+Successfully installed iniconfig-1.1.1 pytest-7.1.2 tomli-2.0.1
+➜  hexlet-pytest poetry run pip list
+Package        Version
+-------------- -------
+attrs          21.4.0
+hexlet-pytest  0.1.0
+iniconfig      1.1.1
+more-itertools 8.13.0
+packaging      21.3
+pip            22.1.2
+pluggy         0.13.1
+py             1.11.0
+pyparsing      3.0.9
+pytest         7.1.2
+setuptools     60.6.0
+tomli          2.0.1
+wcwidth        0.2.5
+wheel          0.37.1
+➜  hexlet-pytest poetry run pytest
+============================= test session starts ==============================
+platform darwin -- Python 3.10.5, pytest-7.1.2, pluggy-0.13.1
+rootdir: /Users/eugenenazirov/Documents/DEVELOPMENT/Projects/hexlet-pytest
+collected 1 item
+
+tests/test_hexlet_pytest.py .                                            [100%]
+
+============================== 1 passed in 0.00s ===============================
+➜  hexlet-pytest cd ..
+➜  Projects ls
+hexlet-auto-test    hexlet-pytest       python-project-lvl1
+➜  Projects h
+HISTCHARS                       hexdump
+HISTFILE                        hexlet-auto-test/
+HISTSIZE                        hexlet-pytest/
+HOME                            hg_prompt_info
+HOMEBREW_CELLAR                 hidutil
+HOMEBREW_PREFIX                 histchars
+HOMEBREW_REPOSITORY             history
+HOST                            hiutil
+h2ph                            host
+h2ph5.18                        hostinfo
+h2ph5.30                        hostname
+h2xs                            hotspot.d
+h2xs5.18                        hpftodit
+h2xs5.30                        hpmdiagnose
+halt                            htcacheclean
+handle_completion_insecurities  htdbm
+has_typed_input                 htdigest
+hash                            htmltree
+hdid                            htmltree5.18
+hdik                            htmltree5.30
+hdiutil                         htpasswd
+hdxml2manxml                    httpd
+head                            httpd-wrapper
+headerdoc2html                  httxt2dbm
+heap
+➜  Projects hexlet-auto-test
+➜  hexlet-auto-test git:(main) poetry run pip install --upgrade pip
+Requirement already satisfied: pip in ./.venv/lib/python3.10/site-packages (22.0.3)
+Collecting pip
+  Using cached pip-22.1.2-py3-none-any.whl (2.1 MB)
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 22.0.3
+    Uninstalling pip-22.0.3:
+      Successfully uninstalled pip-22.0.3
+Successfully installed pip-22.1.2
+➜  hexlet-auto-test git:(main) poetry run pip install --upgrade pytest
+Requirement already satisfied: pytest in ./.venv/lib/python3.10/site-packages (5.4.3)
+Collecting pytest
+  Using cached pytest-7.1.2-py3-none-any.whl (297 kB)
+Collecting tomli>=1.0.0
+  Using cached tomli-2.0.1-py3-none-any.whl (12 kB)
+Requirement already satisfied: py>=1.8.2 in ./.venv/lib/python3.10/site-packages (from pytest) (1.11.0)
+Collecting iniconfig
+  Using cached iniconfig-1.1.1-py2.py3-none-any.whl (5.0 kB)
+Requirement already satisfied: pluggy<2.0,>=0.12 in ./.venv/lib/python3.10/site-packages (from pytest) (0.13.1)
+Requirement already satisfied: packaging in ./.venv/lib/python3.10/site-packages (from pytest) (21.3)
+Requirement already satisfied: attrs>=19.2.0 in ./.venv/lib/python3.10/site-pack
+def reverse(string):
+ages (from pytest) (21.4.0)
+Requirement already satisfied: pyparsing!=3.0.5,>=2.0.2 in ./.venv/lib/python3.10/site-packages (from packaging->pytest) (3.0.9)
+Installing collected packages: iniconfig, tomli, pytest
+  Attempting uninstall: pytest
+from hexlet_pytest.example import reverse
+    Found existing installation: pytest 5.4.3
+    Uninstalling pytest-5.4.3:
+      Successfully uninstalled pytest-5.4.3
+Successfully installed iniconfig-1.1.1 pytest-7.1.2 tomli-2.0.1
+➜  hexlet-auto-test git:(main) poetry run pytest
+============================= test session starts ==============================
+platform darwin -- Python 3.10.5, pytest-7.1.2, pluggy-0.13.1
+rootdir: /Users/eugenenazirov/Documents/DEVELOPMENT/Projects/hexlet-auto-test
+collected 1 item
+
+tests/test_hexlet_auto_test.py .                                         [100%]
+
+============================== 1 passed in 0.01s ===============================
+➜  hexlet-auto-test git:(main) ✗ cd ..
+➜  Projects cd hexlet-pytest
+➜  hexlet-pytest ls
+README.rst     hexlet_pytest  poetry.lock    pyproject.toml tests
+➜  hexlet-pytest cd hexlet_pytest
+➜  hexlet_pytest vim example.py
+➜  hexlet_pytest cd ..
+➜  hexlet-pytest ls
+README.rst     hexlet_pytest  poetry.lock    pyproject.toml tests
+➜  hexlet-pytest cd tests
+➜  tests vim test_example.py
+➜  tests cd ..
+➜  hexlet-pytest poetry run pytest
+============================= test session starts ==============================
+platform darwin -- Python 3.10.5, pytest-7.1.2, pluggy-0.13.1
+rootdir: /Users/eugenenazirov/Documents/DEVELOPMENT/Projects/hexlet-pytest
+collected 3 items
+
+tests/test_example.py ..                                                 [ 66%]
+tests/test_hexlet_pytest.py .                                            [100%]
+
+============================== 3 passed in 0.01s ===============================
+➜  hexlet-pytest git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint: 	git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint: 	git branch -m <name>
+Initialized empty Git repository in /Users/eugenenazirov/Documents/DEVELOPMENT/Projects/hexlet-pytest/.git/
+➜  hexlet-pytest git:(master) ✗ git remote add origin git@github.com:eugenenazirov/hexlet_pytest.git
+➜  hexlet-pytest git:(master) ✗ git pull --rebase
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Compressing objects: 100% (2/2), done.
+Unpacking objects: 100% (3/3), 1.51 KiB | 516.00 KiB/s, done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+From github.com:eugenenazirov/hexlet_pytest
+ * [new branch]      main       -> origin/main
+There is no tracking information for the current branch.
+Please specify which branch you want to rebase against.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> master
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -61,12 +688,6 @@ local_settings.py
 db.sqlite3
 db.sqlite3-journal
 
-# Flask stuff:
-instance/
-.webassets-cache
-
-# Scrapy stuff:
-.scrapy
 
 # Sphinx documentation
 docs/_build/
@@ -85,9 +706,6 @@ ipython_config.py
 .python-version
 
 # pipenv
-#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
-#   However, in case of collaboration, if having platform-specific dependencies or dependencies
-#   having no cross-platform support, pipenv may install dependencies that don't work, or not
 #   install all needed dependencies.
 #Pipfile.lock
 
@@ -105,20 +723,7 @@ celerybeat.pid
 .env
 .venv
 env/
-venv/
-ENV/
-env.bak/
-venv.bak/
 
-# Spyder project settings
-.spyderproject
-.spyproject
-
-# Rope project settings
-.ropeproject
-
-# mkdocs documentation
-/site
 
 # mypy
 .mypy_cache/
@@ -127,3 +732,19 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Poetry
+*.pyc
+
+# Packages
+*.egg
+!/tests/**/*.egg
+/*.egg-info
+/dist/*
+build
+_build
+.cache
+*.so
+
+# Installer logs
+pip-log.txt
